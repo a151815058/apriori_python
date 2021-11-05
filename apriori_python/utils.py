@@ -47,6 +47,8 @@ def getAboveMinSup(itemSet, itemSetList, minSup, globalItemSetWithSup):
     for item in itemSet:
         for itemSet in itemSetList:
             if item.issubset(itemSet):
+                #global表示該item項集的支持度要存著
+                #local表示要在下面計算
                 globalItemSetWithSup[item] += 1
                 localItemSetWithSup[item] += 1
 
@@ -76,6 +78,7 @@ def pruning(candidateSet, prevFreqSet, length):
 
 def associationRule(freqItemSet, itemSetWithSup, minConf):
     rules = []
+
     for k, itemSet in freqItemSet.items():
         for item in itemSet:
             subsets = powerset(item)
